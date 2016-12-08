@@ -1,0 +1,30 @@
+<?php
+
+include("connection.php"); 
+
+$sql = "SELECT * FROM tbl_data ORDER BY time DESC limit 1";
+$result = $conn->query($sql);
+$var="";
+if ($result->num_rows > 0) {
+				while($row = $result->fetch_assoc())
+					{
+						$var .= $row['distance'];
+					}
+			}
+			
+		
+if($var <= "10")
+{
+	//echo 'alert';
+	//echo '{"appdata":'alert'}';
+	echo '{ "appdata":[{"res":"alert"}]}';
+}
+else
+{
+	//echo 'no alert';
+	//echo '{"appdata":'no alert'}';
+	echo '{ "appdata":[{"res":"no alert"}]}';
+}
+
+
+?>

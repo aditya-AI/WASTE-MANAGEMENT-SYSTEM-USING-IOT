@@ -1,0 +1,40 @@
+<?php
+
+	include("connection.php"); 	
+	
+?>
+
+<html>
+   <head>
+      <title>Aditya data</title>
+   </head>
+<body>
+   <h1>Value</h1>
+
+   <table border="1" cellspacing="1" cellpadding="1">
+		<tr>
+			<td>date / time</td>
+			<td>value</td>
+		</tr>
+
+      <?php 
+			$sql = "SELECT * FROM tbl_data ORDER BY time DESC";
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0) {
+				while($row = $result->fetch_assoc())
+					{
+						echo '<tr><td>'.$row["time"]. '</td><td>' . $row["distance"]. '</td></tr>';
+					}
+			}
+			else {
+				echo "0 results";
+			}
+		mysql_close();
+		 
+      ?>
+
+   </table>
+</body>
+</html>
+
+

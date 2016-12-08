@@ -1,0 +1,19 @@
+<?php
+   	include("connection.php");
+   
+	$distance=$_GET["distance"];
+	
+	$sql = "INSERT INTO tbl_data (distance) VALUES ('$distance')";
+
+if (mysqli_query($conn, $sql)) {
+	echo $sql;
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+	
+	
+	mysql_close($conn);
+
+   	header("Location: index.php");
+?>
